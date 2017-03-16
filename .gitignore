@@ -1,0 +1,5 @@
+# ignorujemy plik z sekretami
+secrets.py
+# ignorujemy folder z ustawieniami PyCharm
+/.idea/
+*.pyc
