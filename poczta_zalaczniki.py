@@ -32,12 +32,10 @@ class Poczta(object):
 
         msg.attach(MIMEText(text, _charset='utf-8'))
 
+        # tworze zalaczniki
         for f in files or []:
             with open(f, "rb") as fil:
-                part = MIMEApplication(
-                    fil.read(),
-                    Name=basename(f)
-                )
+                part = MIMEApplication(fil.read(), Name=basename(f))
                 part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
                 msg.attach(part)
 
@@ -48,3 +46,4 @@ class Poczta(object):
         mailer.login(self.login, self.haslo)
         mailer.sendmail(self.login, send_to, msg.as_string())
         mailer.close()
+        
